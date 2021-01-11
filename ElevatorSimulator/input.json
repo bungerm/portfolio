@@ -1,0 +1,12 @@
+{
+  "floors": 20,
+  "elevators": 4,
+  "capacity": 10,
+  "floorTime": 1000,
+  "doorTime": 2000,
+  "idleTime": 10000,
+  "simTime": 60,
+  "personRate": 3,
+  "elevatorAlgorithm": "base",
+  "pendingAlgorithm": "base"
+}
