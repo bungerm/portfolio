@@ -32,7 +32,7 @@ Most of the directories in this repository are code examples from grad school, w
 - Puzzle Game for Android/iOS
 - [Rookfall README](https://github.com/bungerm/portfolio/blob/main/RookfallREADME.md)
 - www.rookfall.com
-- To create levels, I randomly generated the board state, used a breadth first search to see if the board is solvable, and determined approximately how difficult the puzzle was by the number of moves it took to solve it. I created an editor that could generate a given amount of levels of a given difficulty (numbers of moves to solve), load any given level so I could test it personally, edit the level, and save it to an xml.
+- To create levels, I randomly generated the board state, used a breadth first search to see if the board is solvable, and determined approximately how difficult the puzzle was by the number of moves it took to solve it. I created an editor that could generate a given amount of levels of a given difficulty (numbers of moves to solve), load any given level so I could test it personally, edit the level, and save it to an XML.
 
 ### Undergraduate School Projects:
 And for fun, here are some gifs of my old undergraduate projects.
