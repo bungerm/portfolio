@@ -25,8 +25,9 @@ Most of the directories in this repository are code examples from grad school, w
   - [Demo Video (Youtube)](https://www.youtube.com/watch?v=LrQQEjKjleE)
   - An example of the short little demos and prototypes I would create with Taylor Communications.
   
-### Rookfall: 
-<img src="https://www.rookfall.com/uploads/4/7/3/7/47375157/1478154041.png" width="600">
+### Rookfall:
+
+<img src="https://github.com/bungerm/portfolio/blob/main/_images/rookfallLogo1.png" width="600">
 
 - Puzzle Game for Android/iOS
 - www.rookfall.com
