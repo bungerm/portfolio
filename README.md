@@ -24,8 +24,8 @@ Most of the directories in this repository are code examples from grad school, w
   - WARNING - I have kept large blocks of commented out code in order to keep past solutions and quickly experiment with different combinations of solutions. 
 - [NameGenerator](/NameGenerator)
   - Python, Markov Models
-  - Name Generator takes a corpus of boys and girls names, generates a Markov model, and creates random names from the model.
-  - Asks for "male or female: ", "min name length: ", "max name length: ", "order of model: ", "number of names: ".
+  - Name Generator takes a corpus of boys and girls names, generates a Markov Model for each, and creates a number of names from the model.
+  - Asks for "male or female: ", "min name length: ", "max name length: ", "order of model: ", and "number of names: ".
   
 ### Taylor Communications:
 - Promoville
