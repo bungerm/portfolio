@@ -13,7 +13,7 @@ Most of the directories in this repository are code examples from grad school, w
   - BreadthFirst, DepthFirst, Iterative Deepening, Uniform Cost, BestFirst, and AStar with 3 different heuristics
 - [ElevatorSimulator](/ElevatorSimulator)
   - Java, IntelliJ, Object Oriented Programming, Elevator Simulation
-  - IntelliJ IDEA project utilizing Object Orienting Design patterns and practicesto simulate elevator operation. 
+  - IntelliJ IDEA project utilizing Object Orienting Design patterns and practices to simulate elevator operation. 
   - OOP practices include Factory, Impl Objects, Data Transfer Objects, Abstraction, Encapsulation, Information Hiding, etc.
   - Use input.json to set the number of elevators, elevator capacity, amount of floors, rate of people entering the simulation, elevator logic algorithm, etc.
 - [GPProject](/GPProject)
