@@ -21,6 +21,7 @@ Most of the directories in this repository are code examples from grad school, w
   - Game Particle System Optimization Project. Students were given a poorly optimized OpenGL based Particle System and competed to see who could optimize it best.
   - Directory has two Visual Studio projects, [GPUnoptimized](/GPProject/GPUnoptimized) is the unoptimized project, while [GPOptimized](/GPProject/GPOptimized) is my optimized version.
   - I was able to improve the particle system time by a factor of 9.19 with techniques like SIMD, Data Alignment, Replacing STL containers with Linked Lists, moving invariants out of loops, and other Cache considerations.
+  - WARNING - There are blocks of commented out code, and a lack of proper comments. This was a contest where I experimented a tremendous amount. Blocks of commented out code were kept to quickly try combinations of solutions for optimization.
   
 ### Taylor Communications:
 - Promoville
