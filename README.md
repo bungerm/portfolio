@@ -37,16 +37,16 @@ Most of the directories in this repository are code examples from grad school, w
 ### Undergraduate School Projects:
 And for fun, here are some gifs of my old undergraduate projects.
 
-<img src="https://github.com/bungerm/portfolio/blob/main/_images/HotToeJamHeader2.png" width="400">
+<img src="https://github.com/bungerm/portfolio/blob/main/_images/HotToeJamHeader2.png" width="400" alt="Hot Toe Jam Header">
 
-<img src="https://github.com/bungerm/portfolio/blob/main/_images/HotToeJamGif1.gif" width="500">
+<img src="https://github.com/bungerm/portfolio/blob/main/_images/HotToeJamGif1.gif" width="500" alt="Hot Toe Jam Gif1">
 
-<img src="https://github.com/bungerm/portfolio/blob/main/_images/HotToJamGif3.gif" width="500">
+<img src="https://github.com/bungerm/portfolio/blob/main/_images/HotToJamGif3.gif" width="500" alt="Hot Toe Jam Gif3">
 
-<img src="https://github.com/bungerm/portfolio/blob/main/_images/PopCanvasHeader2.png" width="400">
+<img src="https://github.com/bungerm/portfolio/blob/main/_images/PopCanvasHeader2.png" width="400" alt="Pop Canvas Header">
 
-<img src="https://github.com/bungerm/portfolio/blob/main/_images/PopCanvas1.gif" width="500">
+<img src="https://github.com/bungerm/portfolio/blob/main/_images/PopCanvas1.gif" width="500" alt="Pop Canvas Gif1">
 
-<img src="https://github.com/bungerm/portfolio/blob/main/_images/PopCanvas3.gif" width="500">
+<img src="https://github.com/bungerm/portfolio/blob/main/_images/PopCanvas3.gif" width="500" alt="Pop Canvas Gif3">
 
 ### Thank you for reading.
