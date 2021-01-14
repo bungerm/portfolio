@@ -2,7 +2,6 @@
 
 Mike Bunger is a Software Developer currently on the job hunt!
 Here you will find his resume and samples of his work.
-## Resume
 
 ### Graduate School Projects:
 Most of the directories in this repository are code examples from grad school, which I will detail here.
