@@ -7,23 +7,23 @@ Here you will find his resume and samples of his work.
 ### Graduate School Projects:
 Most of the directories in this repository are code examples from grad school, which I will detail here.
 - [EightPuzzle](/EightPuzzle)
-  - Python, Search Algorithms
+  - **Python, Search Algorithms**
   - The Eight Puzzle is a type of sliding puzzle that you have probably seen at one point in your life. [Puzzle Explanation](https://www.wikihow.com/Solve-8-Puzzle)
   - Python project using numerous Search algorithms to solve an Eight Puzzle. I am particularly proud of the implementing a generic Search method that takes the Search algorithm name as a parameter.
   - BreadthFirst, DepthFirst, Iterative Deepening, Uniform Cost, BestFirst, and AStar with 3 different heuristics
 - [ElevatorSimulator](/ElevatorSimulator)
-  - Java, IntelliJ, Object Oriented Programming, Elevator Simulation
+  - **Java, IntelliJ, Object Oriented Programming, Elevator Simulation**
   - IntelliJ IDEA project utilizing Object Orienting Design patterns and practices to simulate elevator operation. 
   - OOP practices include Factory, Impl Objects, Data Transfer Objects, Abstraction, Encapsulation, Information Hiding, etc.
   - Use input.json to set the number of elevators, elevator capacity, amount of floors, rate of people entering the simulation, elevator logic algorithm, etc.
 - [GPProject](/GPProject)
-  - C++, Visual Studio, 3D Particle System, Optimization
+  - **C++, Visual Studio, 3D Particle System, Optimization**
   - Game Particle System Optimization Project. Students were given a poorly optimized OpenGL based Particle System and competed to see who could optimize it best.
   - Directory has two Visual Studio projects, [GPUnoptimized](/GPProject/GPUnoptimized) is the unoptimized project, while [GPOptimized](/GPProject/GPOptimized) is my optimized version.
   - I was able to improve the particle system time by a factor of 9.19 with techniques like SIMD, Data Alignment, Replacing STL containers with Linked Lists, moving invariants out of loops, and other Cache considerations.
   - WARNING - I have kept large blocks of commented out code in order to keep past solutions and quickly experiment with different combinations of solutions. 
 - [NameGenerator](/NameGenerator)
-  - Python, Markov Models
+  - **Python, Markov Models**
   - Name Generator takes a corpus of boys and girls names, generates a Markov Model for each, and creates a number of names from the model.
   - Asks for "male or female: ", "min name length: ", "max name length: ", "order of model: ", and "number of names: ".
   
