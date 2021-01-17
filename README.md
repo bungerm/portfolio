@@ -1,5 +1,10 @@
 # Mike Bunger's Portfolio
 
+<p align="center">
+  <img src="https://github.com/bungerm/portfolio/blob/main/_images/MikeBunger1.jpeg" width="200">
+  <img src="https://github.com/bungerm/portfolio/blob/main/_images/MikeBunger2.jpeg" width="200">
+</p>
+
 Mike Bunger is a Software Developer currently on the job hunt!
 Here you will find his resume and samples of his work.
 
