@@ -1,7 +1,7 @@
 # Mike Bunger's Portfolio
 
 <p align="center">
-  <img src="https://github.com/bungerm/portfolio/blob/main/_images/MikeBunger1.jpeg" width="200">
+  <img src="https://github.com/bungerm/portfolio/blob/main/_images/MikeBunger1.jpeg" width="199">
   <img src="https://github.com/bungerm/portfolio/blob/main/_images/MikeBunger2.jpeg" width="200">
 </p>
 
