@@ -25,7 +25,6 @@ Most of the directories in this repository are code examples from grad school, w
   - Game Particle System Optimization Project. Students were given a poorly optimized OpenGL based Particle System and competed to see who could optimize it best.
   - Directory has two Visual Studio projects, [GPUnoptimized](/GPProject/GPUnoptimized) is the unoptimized project, while [GPOptimized](/GPProject/GPOptimized) is my optimized version.
   - Improved particle system time by a factor of 9.19 with techniques like SIMD, Data Alignment, Replacing STL containers with Linked Lists, moving invariants out of loops, and other Cache considerations.
-  - WARNING - I have kept large blocks of commented out code in order to keep past solutions and quickly experiment with different combinations of solutions.
 - [MemorySystem](/MemorySystem)
   - **C++, Visual Studio, Memory Management System**
   - Memory management system overwriting global new and delete, allowing for setting of data alignment with normal and fixed heaps. Uses Win32 memory management functions. Secret pointer at end of block, pointing to block header.

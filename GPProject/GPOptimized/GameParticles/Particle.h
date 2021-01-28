@@ -16,22 +16,26 @@ class Particle : public Align16
 public:
 	friend class ParticleEmitter;
 
+	// big four
 	Particle() = default;
 	Particle(const Particle&);
 	Particle& operator = (const Particle&);
 	~Particle() = default;
 
+	// update loop
 	void Update(const float& time_elapsed);
 	//void CopyDataOnly(Particle *p);
 
 private:
 	Particle* next;
+	// no longer need a prev particle pointer
 	//Particle* prev;
 
 	float	life;
 	float	rotation;
 	float	rotation_velocity;
 
+	// matrix of previous, difference, and current matrices
 	Matrix prevMatrix;
 	Matrix diffMatrix;
 	Matrix currMatrix;
@@ -40,6 +44,9 @@ private:
 	Vect4D	velocity;
 	Vect4D	scale;
 
+
+	// Union struct trick
+	// did not have any meaningful effect
 	//union {
 	//	struct {
 

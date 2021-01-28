@@ -1,11 +1,8 @@
 //----------------------------------------------------------------------------
 // Mike Bunger
 // Matrix
-// 
-// Matrix related operations
 //
 // Using SIMD for every operation possible
-// Commented out code is standard setting, getting, and operations
 //----------------------------------------------------------------------------
 
 #include <Math.h>
@@ -14,63 +11,16 @@
 #include "Vect4D.h"
 #include "Matrix.h"
 
-//Matrix::Matrix()
-//{	// constructor for the matrix
-//	//this->m0 = 0.0;
-//	//this->m1 = 0.0;
-//	//this->m2 = 0.0;
-//	//this->m3 = 0.0;
-//
-//	//this->m4 = 0.0;
-//	//this->m5 = 0.0;
-//	//this->m6 = 0.0;
-//	//this->m7 = 0.0;
-//
-//	//this->m8 = 0.0;
-//	//this->m9 = 0.0;
-//	//this->m10 = 0.0;
-//	//this->m11 = 0.0;
-//
-//	//this->m12 = 0.0;
-//	//this->m13 = 0.0;
-//	//this->m14 = 0.0;
-//	//this->m15 = 0.0;
-//
-//	v0._m = _mm_set_ps(0.0f, 0.0f, 0.0f, 0.0f);
-//	v1._m = _mm_set_ps(0.0f, 0.0f, 0.0f, 0.0f);
-//	v2._m = _mm_set_ps(0.0f, 0.0f, 0.0f, 0.0f);
-//	v3._m = _mm_set_ps(0.0f, 0.0f, 0.0f, 0.0f);
-//
-//}
-
+// copy constructor
 Matrix::Matrix(const Matrix& t)
-{ // copy constructor
-	//this->m0 = t.m0;
-	//this->m1 = t.m1;
-	//this->m2 = t.m2;
-	//this->m3 = t.m3;
-
-	//this->m4 = t.m4;
-	//this->m5 = t.m5;
-	//this->m6 = t.m6;
-	//this->m7 = t.m7;
-
-	//this->m8 = t.m8;
-	//this->m9 = t.m9;
-	//this->m10 = t.m10;
-	//this->m11 = t.m11;
-
-	//this->m12 = t.m12;
-	//this->m13 = t.m13;
-	//this->m14 = t.m14;
-	//this->m15 = t.m15;
-
+{
 	v0._m = t.v0._m;
 	v1._m = t.v1._m;
 	v2._m = t.v2._m;
 	v3._m = t.v3._m;
 }
 
+// assignment operator
 Matrix& Matrix::operator = (const Matrix& t)
 {
 	this->v0._m = t.v0._m;
@@ -80,101 +30,43 @@ Matrix& Matrix::operator = (const Matrix& t)
 	return *this;
 }
 
-//Matrix::~Matrix()
-//{
-//	// nothign to delete
-//}
-
+// set the matrix to the identity matrix
 void Matrix::setIdentMatrix()
-{ // initialize to the identity matrix
-	//this->m0 = 1.0;
-	//this->m1 = 0.0;
-	//this->m2 = 0.0;
-	//this->m3 = 0.0;
-
-	//this->m4 = 0.0;
-	//this->m5 = 1.0;
-	//this->m6 = 0.0;
-	//this->m7 = 0.0;
-
-	//this->m8 = 0.0;
-	//this->m9 = 0.0;
-	//this->m10 = 1.0;
-	//this->m11 = 0.0;
-
-	//this->m12 = 0.0;
-	//this->m13 = 0.0;
-	//this->m14 = 0.0;
-	//this->m15 = 1.0;
-
+{
 	v0._m = _mm_set_ps(0.0f, 0.0f, 0.0f, 1.0f);
 	v1._m = _mm_set_ps(0.0f, 0.0f, 1.0f, 0.0f);
 	v2._m = _mm_set_ps(0.0f, 1.0f, 0.0f, 0.0f);
 	v3._m = _mm_set_ps(1.0f, 0.0f, 0.0f, 0.0f);
 }
 
+ // set the translation matrix (note: we are row major)
 void Matrix::setTransMatrix(Vect4D *t)
-{ // set the translation matrix (note: we are row major)
-	//this->m0 = 1.0;
-	//this->m1 = 0.0;
-	//this->m2 = 0.0;
-	//this->m3 = 0.0;
-
-	//this->m4 = 0.0;
-	//this->m5 = 1.0;
-	//this->m6 = 0.0;
-	//this->m7 = 0.0;
-
-	//this->m8 = 0.0;
-	//this->m9 = 0.0;
-	//this->m10 = 1.0;
-	//this->m11 = 0.0;
-
-	//this->m12 = t->x;
-	//this->m13 = t->y;
-	//this->m14 = t->z;
-	//this->m15 = 1.0;
-
+{
 	v0._m = _mm_set_ps(0.0f, 0.0f, 0.0f, 1.0f);
 	v1._m = _mm_set_ps(0.0f, 0.0f, 1.0f, 0.0f);
 	v2._m = _mm_set_ps(0.0f, 1.0f, 0.0f, 0.0f);
 	v3._m = _mm_set_ps(1.0f, t->_m.m128_f32[2], t->_m.m128_f32[1], t->_m.m128_f32[0]);
 }
 
+// select a row in the matrix and set it to a vector
 void Matrix::set(const int& row, Vect4D *t)
 {
 	// initialize the rows of the matrix
 	switch (row)
 	{
 	case MATRIX_ROW_0:
-		//this->m0 = t->x;
-		//this->m1 = t->y;
-		//this->m2 = t->z;
-		//this->m3 = t->w;
 		v0._m = _mm_load_ps(&t->_m.m128_f32[0]);
 		break;
 
 	case MATRIX_ROW_1:
-		//this->m4 = t->x;
-		//this->m5 = t->y;
-		//this->m6 = t->z;
-		//this->m7 = t->w;
 		v1._m = _mm_load_ps(&t->_m.m128_f32[0]);
 		break;
 
 	case MATRIX_ROW_2:
-		//this->m8 = t->x;
-		//this->m9 = t->y;
-		//this->m10 = t->z;
-		//this->m11 = t->w;
 		v2._m = _mm_load_ps(&t->_m.m128_f32[0]);
 		break;
 
 	case MATRIX_ROW_3:
-		//this->m12 = t->x;
-		//this->m13 = t->y;
-		//this->m14 = t->z;
-		//this->m15 = t->w;
 		v3._m = _mm_load_ps(&t->_m.m128_f32[0]);
 		break;
 
@@ -184,99 +76,24 @@ void Matrix::set(const int& row, Vect4D *t)
 	}
 }
 
-//float&Matrix::operator[](INDEX_ENUM e)
-//{
-//	// get the individual elements
-//	switch (e)
-//	{
-//	case 0:
-//		return m0;
-//		break;
-//	case 1:
-//		return m1;
-//		break;
-//	case 2:
-//		return m2;
-//		break;
-//	case 3:
-//		return m3;
-//		break;
-//	case 4:
-//		return m4;
-//		break;
-//	case 5:
-//		return m5;
-//		break;
-//	case 6:
-//		return m6;
-//		break;
-//	case 7:
-//		return m7;
-//		break;
-//	case 8:
-//		return m8;
-//		break;
-//	case 9:
-//		return m9;
-//		break;
-//	case 10:
-//		return m10;
-//		break;
-//	case 11:
-//		return m11;
-//		break;
-//	case 12:
-//		return m12;
-//		break;
-//	case 13:
-//		return m13;
-//		break;
-//	case 14:
-//		return m14;
-//		break;
-//	case 15:
-//		return m15;
-//		break;
-//	default:
-//		assert(0);
-//		return m0;
-//		break;
-//	}
-//}
-
+// get a specified row of the matrix
 void Matrix::get(const int& row, Vect4D *t)
-{ // get a row of the matrix
+{
 	switch (row)
 	{
 	case MATRIX_ROW_0:
-		//t->x = this->m0;
-		//t->y = this->m1;
-		//t->z = this->m2;
-		//t->w = this->m3;
 		t->_m = this->v0._m;
 		break;
 
 	case MATRIX_ROW_1:
-		//t->x = this->m4;
-		//t->y = this->m5;
-		//t->z = this->m6;
-		//t->w = this->m7;
 		t->_m = this->v1._m;
 		break;
 
 	case MATRIX_ROW_2:
-		//t->x = this->m8;
-		//t->y = this->m9;
-		//t->z = this->m10;
-		//t->w = this->m11;
 		t->_m = this->v2._m;
 		break;
 
 	case MATRIX_ROW_3:
-		//t->x = this->m12;
-		//t->y = this->m13;
-		//t->z = this->m14;
-		//t->w = this->m15;
 		t->_m = this->v3._m;
 		break;
 
@@ -285,80 +102,74 @@ void Matrix::get(const int& row, Vect4D *t)
 	}
 }
 
+// matrix multiplication
 Matrix& Matrix::operator*(const Matrix& mb)
-{ // matrix multiplications
-	//Matrix tmp;
-
-	//tmp.m0 = (m0*rhs.m0) + (m1*rhs.m4) + (m2*rhs.m8) + (m3*rhs.m12);
-	//tmp.m1 = (m0*rhs.m1) + (m1*rhs.m5) + (m2*rhs.m9) + (m3*rhs.m13);
-	//tmp.m2 = (m0*rhs.m2) + (m1*rhs.m6) + (m2*rhs.m10) + (m3*rhs.m14);
-	//tmp.m3 = (m0*rhs.m3) + (m1*rhs.m7) + (m2*rhs.m11) + (m3*rhs.m15);
-
-	//tmp.m4 = (m4*rhs.m0) + (m5*rhs.m4) + (m6*rhs.m8) + (m7*rhs.m12);
-	//tmp.m5 = (m4*rhs.m1) + (m5*rhs.m5) + (m6*rhs.m9) + (m7*rhs.m13);
-	//tmp.m6 = (m4*rhs.m2) + (m5*rhs.m6) + (m6*rhs.m10) + (m7*rhs.m14);
-	//tmp.m7 = (m4*rhs.m3) + (m5*rhs.m7) + (m6*rhs.m11) + (m7*rhs.m15);
-
-	//tmp.m8 = (m8*rhs.m0) + (m9*rhs.m4) + (m10*rhs.m8) + (m11*rhs.m12);
-	//tmp.m9 = (m8*rhs.m1) + (m9*rhs.m5) + (m10*rhs.m9) + (m11*rhs.m13);
-	//tmp.m10 = (m8*rhs.m2) + (m9*rhs.m6) + (m10*rhs.m10) + (m11*rhs.m14);
-	//tmp.m11 = (m8*rhs.m3) + (m9*rhs.m7) + (m10*rhs.m11) + (m11*rhs.m15);
-
-	//tmp.m12 = (m12*rhs.m0) + (m13*rhs.m4) + (m14*rhs.m8) + (m15*rhs.m12);
-	//tmp.m13 = (m12*rhs.m1) + (m13*rhs.m5) + (m14*rhs.m9) + (m15*rhs.m13);
-	//tmp.m14 = (m12*rhs.m2) + (m13*rhs.m6) + (m14*rhs.m10) + (m15*rhs.m14);
-	//tmp.m15 = (m12*rhs.m3) + (m13*rhs.m7) + (m14 *rhs.m11) + (m15*rhs.m15);
-
-	//return tmp;
-
+{
+	// the matrix we will be returning
 	Matrix out;
 
+	// load the mb matrix
 	__m128 copy4 = _mm_load_ps(&mb.v0.x);
 	__m128 copy5 = _mm_load_ps(&mb.v1.x);
 	__m128 copy6 = _mm_load_ps(&mb.v2.x);
 	__m128 copy7 = _mm_load_ps(&mb.v3.x);
 
+	// transpose the mb copy
 	_MM_TRANSPOSE4_PS(copy4, copy5, copy6, copy7);
 
+	// load our matrix's first row
 	__m128 row = _mm_load_ps(&this->v0.x);
 
+	// multiply the mb copy by our row
 	__m128 t0 = _mm_mul_ps(row, copy4);
 	__m128 t1 = _mm_mul_ps(row, copy5);
 	__m128 t2 = _mm_mul_ps(row, copy6);
 	__m128 t3 = _mm_mul_ps(row, copy7);
 
+	// horizontal add all four rows of the row1 * mb matrix, load it as out's first row
 	out.v0._m = _mm_load_ps(&_mm_hadd_ps(_mm_hadd_ps(t0, t1), _mm_hadd_ps(t2, t3)).m128_f32[0]);
 
+	// next row (2)
 	row = _mm_load_ps(&this->v1.x);
 
+	// multiply
 	t0 = _mm_mul_ps(row, copy4);
 	t1 = _mm_mul_ps(row, copy5);
 	t2 = _mm_mul_ps(row, copy6);
 	t3 = _mm_mul_ps(row, copy7);
 
+	// add and load
 	out.v1._m = _mm_load_ps(&_mm_hadd_ps(_mm_hadd_ps(t0, t1), _mm_hadd_ps(t2, t3)).m128_f32[0]);
 
+	// next row (3)
 	row = _mm_load_ps(&this->v2.x);
 
+	// multiply
 	t0 = _mm_mul_ps(row, copy4);
 	t1 = _mm_mul_ps(row, copy5);
 	t2 = _mm_mul_ps(row, copy6);
 	t3 = _mm_mul_ps(row, copy7);
 
+	// add and load
 	out.v2._m = _mm_load_ps(&_mm_hadd_ps(_mm_hadd_ps(t0, t1), _mm_hadd_ps(t2, t3)).m128_f32[0]);
 
+	// next row (4)
 	row = _mm_load_ps(&this->v3.x);
 
+	// multiply
 	t0 = _mm_mul_ps(row, copy4);
 	t1 = _mm_mul_ps(row, copy5);
 	t2 = _mm_mul_ps(row, copy6);
 	t3 = _mm_mul_ps(row, copy7);
 
+	// add and load
 	out.v3._m = _mm_load_ps(&_mm_hadd_ps(_mm_hadd_ps(t0, t1), _mm_hadd_ps(t2, t3)).m128_f32[0]);
 
+	// return the finished matrix
 	return out;
 }
 
+// subtract operator
 Matrix& Matrix::operator - (const Matrix& t)
 {
 	Matrix out;
@@ -371,29 +182,9 @@ Matrix& Matrix::operator - (const Matrix& t)
 	return out;
 }
 
+// divide equals operator
 Matrix& Matrix::operator/=(float rhs)
 {
-	// divide each element by a value
-	// using inverse multiply trick, faster that individual divides
-	//float inv_rhs = 1.0 / rhs;
-
-	//m0 *= inv_rhs;
-	//m1 *= inv_rhs;
-	//m2 *= inv_rhs;
-	//m3 *= inv_rhs;
-	//m4 *= inv_rhs;
-	//m5 *= inv_rhs;
-	//m6 *= inv_rhs;
-	//m7 *= inv_rhs;
-	//m8 *= inv_rhs;
-	//m9 *= inv_rhs;
-	//m10 *= inv_rhs;
-	//m11 *= inv_rhs;
-	//m12 *= inv_rhs;
-	//m13 *= inv_rhs;
-	//m14 *= inv_rhs;
-	//m15 *= inv_rhs;
-
 	__m128 temp = _mm_set1_ps(rhs);
 	this->v0._m = _mm_load_ps(&_mm_div_ps(this->v0._m, temp).m128_f32[0]);
 	this->v1._m = _mm_load_ps(&_mm_div_ps(this->v1._m, temp).m128_f32[0]);
@@ -403,8 +194,12 @@ Matrix& Matrix::operator/=(float rhs)
 	return *this;
 }
 
+// calculate the determinant (may be a better way)
+// math provided by keenan
 float Matrix::Determinant()
 {
+	// WRITTEN OUT
+
 	// A = { a,b,c,d / e,f,g,h / j,k,l,m / n,o,p,q }
 	// A = { 0,1,2,3 / 4,5,6,7 / 8,9,10,11 / 12,13,14,15 }
 
@@ -444,8 +239,12 @@ float Matrix::Determinant()
 
 }
 
+// calculate the adjugate (may be a better way)
+// math provided by keenan
 Matrix Matrix::GetAdjugate()
 {
+	// WRITTEN OUT
+
 	// matrix = { a,b,c,d / e,f,g,h / j,k,l,m / n,o,p,q }
 
 	// ta = lq - mp
@@ -625,6 +424,8 @@ Matrix Matrix::GetAdjugate()
 	return tmp;
 }
 
+// calculate the inverse
+// math provided by keenan
 void Matrix::Inverse(Matrix &out)
 {
 	Matrix tmp;
@@ -642,33 +443,15 @@ void Matrix::Inverse(Matrix &out)
 	out = tmp;
 }
 
+// set the matrix to a scale matrix
 void Matrix::setScaleMatrix(Vect4D *scale)
 {
+	// WRITTEN OUT
+
 	//	{	sx		0		0		0	}
 	//	{	0		sy		0		0	}
 	//	{	0		0		sz		0	}
 	//	{	0		0		0		1	}
-	
-	//Matrix tmp;
-	//this->m0 = scale->x;
-	//this->m1 = 0;
-	//this->m2 = 0;
-	//this->m3 = 0;
-
-	//this->m4 = 0;
-	//this->m5 = scale->y;
-	//this->m6 = 0;
-	//this->m7 = 0;
-
-	//this->m8 = 0;
-	//this->m9 = 0;
-	//this->m10 = scale->z;
-	//this->m11 = 0;
-
-	//this->m12 = 0;
-	//this->m13 = 0;
-	//this->m14 = 0;
-	//this->m15 = 1.0;
 
 	v0._m = _mm_set_ps(0.0f, 0.0f, 0.0f, scale->_m.m128_f32[0]);
 	v1._m = _mm_set_ps(0.0f, 0.0f, scale->_m.m128_f32[1], 0.0f);
@@ -676,35 +459,15 @@ void Matrix::setScaleMatrix(Vect4D *scale)
 	v3._m = _mm_set_ps(1.0f, 0.0f, 0.0f, 0.0f);
 }
 
+// set the matrix to a Z rotation matrix
 void Matrix::setRotZMatrix(float az)
 {
+	// WRITTEN OUT
+
 	//	{	cos		-sin	0		0	}
 	//	{	sin		cos		0		0	}
 	//	{	0		0		1		0	}
 	//	{	0		0		0		1	}
-	
-	//Matrix tmp;
-	//tmp.m0 = cos(az);
-	//tmp.m1 = -sin(az);
-	//tmp.m2 = 0;
-	//tmp.m3 = 0;
-
-	//tmp.m4 = sin(az);
-	//tmp.m5 = cos(az);
-	//tmp.m6 = 0;
-	//tmp.m7 = 0;
-
-	//tmp.m8 = 0;
-	//tmp.m9 = 0;
-	//tmp.m10 = 1;
-	//tmp.m11 = 0;
-
-	//tmp.m12 = 0;
-	//tmp.m13 = 0;
-	//tmp.m14 = 0;
-	//tmp.m15 = 1;
-
-	//*this = tmp;
 
 	v0._m = _mm_set_ps(0.0f, 0.0f, -sin(az), cos(az));
 	v1._m = _mm_set_ps(0.0f, 0.0f, cos(az), sin(az));

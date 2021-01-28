@@ -47,6 +47,7 @@
 //{
 //}
 
+// Copy constructor
 Particle::Particle(const Particle& p)
 {
 	this->next = p.next;
@@ -61,6 +62,7 @@ Particle::Particle(const Particle& p)
 	this->scale = p.scale;
 }
 
+// Assignment operator
 Particle& Particle::operator=(const Particle& p)
 {
 	this->next = p.next;
@@ -76,13 +78,17 @@ Particle& Particle::operator=(const Particle& p)
 	return *this;
 }
 
+// Update loop
 void Particle::Update(const float& time_elapsed)
 {
+	// store the last matrix
 	prevMatrix = currMatrix;
 
+	// use difference matrix to calculate determinant
 	float MatrixScale = diffMatrix.Determinant();
 
 	// serious math below - magic secret sauce
+	// math provided by keenan
 	life += time_elapsed;
 	position += (velocity * (time_elapsed));
 
@@ -97,7 +103,7 @@ void Particle::Update(const float& time_elapsed)
 		MatrixScale = 1.0f / MatrixScale;
 	};
 
-	
+	// calculate the rotation, with a constant multiplier to adjust speed
 	rotation += (MatrixScale + rotation_velocity) * time_elapsed * 4.0f;
 }
 

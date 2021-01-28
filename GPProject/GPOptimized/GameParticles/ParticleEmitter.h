@@ -1,6 +1,9 @@
 //----------------------------------------------------------------------------
 // Mike Bunger
 // ParticleEmitter header
+//
+// Particle Emitter block loads particles, keeps track of alive and dead,
+// draws them
 //----------------------------------------------------------------------------
 
 #ifndef PARTICLEEMITTER_H
@@ -14,6 +17,7 @@
 class ParticleEmitter
 {
 public:
+	// big four
 	ParticleEmitter();
 	ParticleEmitter(const ParticleEmitter&) = default;
 	ParticleEmitter& operator = (const ParticleEmitter&) = default;
@@ -23,10 +27,13 @@ public:
 	//void update();
 	void draw();
 
+	// no longer need these function
 	//void addParticleToList(Particle *p);
 	//void removeParticleFromList(Particle *p);
 
+	// adds randomness to particle movement
 	void Execute(Vect4D& pos, Vect4D& vel, Vect4D& sc);
+	// frees up memory
 	void GoodBye();
 
 	//my additions
@@ -35,9 +42,10 @@ public:
 	void myUpdate();
 
 private:
-
+	// new particle start position and velocity
 	Vect4D start_position;
 	Vect4D start_velocity;
+	// particle variances
 	Vect4D vel_variance;
 	Vect4D pos_variance;
 
@@ -46,18 +54,20 @@ private:
 	float last_loop;
 	float scale_variance;
 
-	//my additions
+	//////////////////
+	// MY ADDITIONS //
+	//////////////////
+
+	// two linked lists to keep track of alive vs dead particles
+	// alive particles head pointer
 	Particle* activeHead;
+	// dead particles head pointer
 	Particle* deadHead;
+	// heap pointer (where the block loaded particles begin)
 	Particle* topHeap;
 
+	// camera transformation matrix
 	Matrix transCamera;
-
-	// matrix mult method
-	Matrix transParticle;
-	Matrix rotParticle;
-	Matrix scaleMatrix;
-	Matrix tmp;
 };
 
 #endif

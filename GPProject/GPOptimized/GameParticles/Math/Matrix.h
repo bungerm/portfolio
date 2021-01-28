@@ -27,33 +27,45 @@ public:
 		MATRIX_ROW_3
 	};
 
+	// big four
 	Matrix() = default;
 	Matrix(const Matrix&);
 	Matrix& operator = (const Matrix&);
 	~Matrix() = default;
 
+	// set and get
 	void set(const int& row, Vect4D *t);
 	void get(const int& row, Vect4D *vOut);
 
+	// set identity
 	void setIdentMatrix();
+	// set translation
 	void setTransMatrix(Vect4D *t);
+	// set scale
 	void setScaleMatrix(Vect4D *s);
+	// set Z rotation
 	void setRotZMatrix(float Z_Radians);
 
-	//float &operator[](INDEX_ENUM e);
-
+	// matrix multiply and subtract
 	Matrix& operator * (const Matrix &t);
 	Matrix& operator - (const Matrix &t);
 
+	// calculate the determinant
 	float Determinant();
 
+	// calculate the adjugate
 	Matrix GetAdjugate();
+	// divide equals operator
 	Matrix& Matrix::operator/=(float t);
 
+	// 
 	void Matrix::Inverse(Matrix &out);
 
 public:
 
+	// the union struct trick
+	// allows polymorphism
+	// and performance gains? unsure
 	union
 	{
 		struct

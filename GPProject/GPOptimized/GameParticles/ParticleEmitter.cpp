@@ -1,7 +1,7 @@
 //----------------------------------------------------------------------------
 // Mike Bunger
 // Particle Emitter
-// 
+//
 // Many optimizations:
 // Implemented two linked lists to replace stl (Alive and Dead Particles)
 // Block loaded the particles in constructor
@@ -64,11 +64,12 @@ ParticleEmitter::ParticleEmitter() :
 	deadHead(nullptr),
 	topHeap(nullptr)
 {
+	// start the performance clock
 	GlobalTimer.Toc();
-
 	last_spawn = GlobalTimer.TimeInSeconds();
 	last_loop = GlobalTimer.TimeInSeconds();
 
+	// block load the particles
 	this->loadParticles();
 
 	// OpenGL goo... don't worrry about this
@@ -83,39 +84,23 @@ ParticleEmitter::ParticleEmitter() :
 //	// do nothing
 //}
 
+// load all particles into memory aligned and with next pointers filled
 void ParticleEmitter::loadParticles() {
-	// create all particles in memory
-	//this->deadHead = new Particle[NUM_PARTICLES]();
-	//this->topHeap = this->deadHead;
-	//Particle* nextPtr = (Particle*)(this->deadHead + 1);
-	//this->deadHead->next = nextPtr;
-
-
+	// create enough 16 byte aligned space for all the particles
 	this->deadHead = (Particle*)_aligned_malloc(NUM_PARTICLES * sizeof(Particle), 16);
 	this->topHeap = this->deadHead;
 
 	Particle* nextPtr = deadHead;
 
+	// fill in the next pointers for each particle
 	for (int i = 0; i < NUM_PARTICLES - 1; i++) {
 		nextPtr->next = (Particle*)(nextPtr + 1);
 		nextPtr = nextPtr->next;
 	}
 	nextPtr->next = nullptr;
-
-
-	//Particle* currentPtr = new Particle();
-	//Particle* nextPtr = new Particle();
-	//currentPtr->next = nextPtr;
-	//this->deadHead = currentPtr;
-
-	//for (int i = 0; i < NUM_PARTICLES -2; i++) {
-	//	currentPtr = nextPtr;
-	//	nextPtr = new Particle();
-	//	currentPtr->next = nextPtr;
-	//}
-	//nextPtr->next = nullptr;
 }
 
+// activates one dead particle
 void ParticleEmitter::activateParticle() {
 	// create another particle if there are ones free
 	if (this->deadHead != nullptr)
@@ -207,7 +192,8 @@ void ParticleEmitter::myUpdate()
 	last_loop = current_time;
 }
 
-// CALCULATE THE TRANSFORM OF A PARTICLE IN ONE FUNCTION, NICE!
+// CALCULATE THE TRANSFORM OF A PARTICLE IN ONE EFFICIENT FUNCTION
+// proud of this one, did all the math by hand
 float* calcTransform(const Vect4D& s, const Matrix& c, const Vect4D& p, const float r) {
 	Matrix out;
 
@@ -231,14 +217,6 @@ void ParticleEmitter::draw()
 
 	while (active != nullptr)
 	{
-		// matrix mult method
-		//transParticle.setTransMatrix(&(active->position * 0.35));
-		//rotParticle.setRotZMatrix(active->rotation);
-		//scaleMatrix.setScaleMatrix(&active->scale);
-		//tmp = scaleMatrix * transCamera * transParticle * rotParticle * scaleMatrix;
-		//glLoadMatrixf(reinterpret_cast<float*>(&(tmp)));
-
-
 		// set the transformation matrix
 		glLoadMatrixf(calcTransform(active->scale, transCamera, active->position * 0.35f, active->rotation));
 
@@ -259,15 +237,10 @@ void ParticleEmitter::draw()
 	}
 }
 
+// adds randomness to the particle movement
 void ParticleEmitter::Execute(Vect4D& pos, Vect4D& vel, Vect4D& sc)
 {
-	// Add some randomness...
-
-	// --------------------------------------------------------------
-	//   Ses it's ugly - I didn't write this so don't bitch at me   |
-	//   Sometimes code like this is inside real commerical code    |
-	//   ( so now you know how it feels )  |
-	//---------------------------------------------------------------
+	// This code was given by keenan, minimal changes were made
 
 	// x - variance
 	float var = static_cast<float>(rand() % 1000) * 0.005f; // Var
@@ -347,34 +320,11 @@ void ParticleEmitter::Execute(Vect4D& pos, Vect4D& vel, Vect4D& sc)
 	sc = sc * var;
 }
 
-
+// free the block of particles
+// used to be complicated, so I kept the function
 void ParticleEmitter::GoodBye()
 {
-	//Particle *pTmp = this->headParticle;
-	//Particle *pDeadMan = nullptr;
-	//while (pTmp)
-	//{
-	//	pDeadMan = pTmp;
-	//	pTmp = pTmp->next;
-	//	delete pDeadMan;
-	//}
-
 	_aligned_free(topHeap);
-	//_aligned_free(start_position);
-
-	//Particle* temp = deadHead;
-	//while (deadHead != nullptr) {
-	//	deadHead = deadHead->next;
-	//	delete temp;
-	//	temp = deadHead;
-	//}
-
-	//temp = activeHead;
-	//while (activeHead != nullptr) {
-	//	activeHead = activeHead->next;
-	//	delete temp;
-	//	temp = activeHead;
-	//}
 }
 
 // End of file
