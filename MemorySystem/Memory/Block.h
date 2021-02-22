@@ -1,6 +1,9 @@
 //---------------------------------------------------------------
 // Mike Bunger
 // Block header
+//
+// The Block class keeps track of block statistics and links
+// in the heap and global linked lists
 //---------------------------------------------------------------
 
 #ifndef BLOCK_H
@@ -8,13 +11,6 @@
 
 namespace Azul
 {
-
-	//-------------------------------------------------------------------------
-	// Weird thing
-	//   Please declare your forward declarations INSIDE namespace
-	//   Outside the namespace cause all kinds of hell
-	//-------------------------------------------------------------------------
-
 	class Block
 	{
 	public:
@@ -23,7 +19,7 @@ namespace Azul
 		static const uint32_t NameNumChar = (Block::NameLength - 1);
 
 	public:
-		// Public methods
+		// getters
 		Block* GetHeapNext() const;
 		Block* GetHeapPrev() const;
 		Block* GetGlobalNext() const;
@@ -35,9 +31,10 @@ namespace Azul
 
 	private:
 		friend class Heap;
-		// Add tracking links 
+		// next and previous in the heap
 		Block* hNext;
 		Block* hPrev;
+		// next and previous globally
 		Block* gNext;
 		Block* gPrev;
 

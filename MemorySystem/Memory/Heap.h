@@ -8,6 +8,7 @@
 
 #include "Mem.h"
 
+// forward declarations (outside namespace)
 void* operator new(size_t inSize, Azul::Heap* const pHeap, Azul::Mem::Align align, const char* inName, size_t lineNum);
 void* operator new[](size_t inSize, Azul::Heap* const pHeap, Azul::Mem::Align align, const char* inName, size_t lineNum);
 void* operator new(size_t inSize, Azul::Heap* const pHeap, const char* inName, size_t lineNum);
@@ -16,14 +17,7 @@ void operator delete[](void* p);
 
 namespace Azul
 {
-
-	//-------------------------------------------------------------------------
-	// Namespace Weird thing
-	//   Please declare your forward declarations INSIDE namespace
-	//   Outside the namespace cause all kinds of hell
-	//-------------------------------------------------------------------------
-
-	// Forward declaration
+	// Forward declaration (inside namespace)
 	class Block;
 
 	// Heap class
@@ -84,9 +78,11 @@ namespace Azul
 		friend void ::operator delete(void* p);
 		friend void ::operator delete[](void* p);
 
+		// private constructors
 		Heap(const char* name, Heap::Type type, Mem* mem, unsigned int size);
 		Heap(const char* name, Heap::Type type, Mem* mem, unsigned int numBlocks, unsigned int sizePerBlock, Mem::Align align = Mem::Align::Default);
 
+		// Alloc for our normal and fixed heaps
 		void* Alloc(size_t inSize, Azul::Mem::Align align, const char* inName, size_t lineNum);
 		void* FixedAlloc(const char* inName, size_t lineNum, size_t inSize);
 

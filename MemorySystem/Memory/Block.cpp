@@ -2,7 +2,7 @@
 // Mike Bunger
 // Memory Block
 //
-// Mostly getters
+// Self explanatory getters
 //---------------------------------------------------------------
 
 #include "Block.h"

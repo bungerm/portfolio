@@ -3,6 +3,7 @@
 // Dog
 //
 // Basic class used for testing memory system
+// print statments used for debugging purposes
 //---------------------------------------------------------------
 
 #include "Dog.h"
