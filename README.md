@@ -25,6 +25,10 @@ Most of the directories in this repository are code examples from grad school, w
   - Game Particle System Optimization Project. Students were given a poorly optimized OpenGL based Particle System and competed to see who could optimize it best.
   - Directory has two Visual Studio projects, [GPUnoptimized](/GPProject/GPUnoptimized) is the unoptimized project, while [GPOptimized](/GPProject/GPOptimized) is my optimized version.
   - Improved particle system time by a factor of 9.19 with techniques like SIMD, Data Alignment, Replacing STL containers with Linked Lists, moving invariants out of loops, and other Cache considerations.
+- [KnowYourGovernment](/KnowYourGovernment)
+  - **Java, Android Studio, ASyncTask, Google Civic API**
+  - Android project utilizing Google Civics API, displays members of US government based on location, displays their official photo, address, phone, websites, and media accounts.
+  - Uses geolocation to set default location, parses JSON from the API, loads data objects into RecyclerView via AsyncTask.
 - [MemorySystem](/MemorySystem)
   - **C++, Visual Studio, Memory Management System**
   - Memory management system overwriting global new and delete, allowing for setting of data alignment with normal and fixed heaps. Uses Win32 memory management functions. Secret pointer at end of block, pointing to block header.
