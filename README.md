@@ -37,6 +37,10 @@ Most of the directories in this repository are code examples from grad school, w
   - **Python, Markov Models**
   - Name Generator takes a corpus of boys and girls names, generates a Markov Model for each, and creates a number of names from the model.
   - Asks for "male or female: ", "min name length: ", "max name length: ", "order of model: ", and "number of names: ".
+- [GIS Study - Japan's Declinign Population](https://github.com/bungerm/portfolio/blob/main/Japan%E2%80%99s%20Declining%20Population.pdf)
+  - **Geographic Information System, ArcGIS**
+  - Investigative study using GIS maps to explore the nature of Japan's declining population. Dataset used is Statistical Observations of Municipalities 2020 by the Statistics Bureau of Japan
+  - Methodologies are detailed in the report. Maps begin of page 6. Very interesting findings!
   
 ### Taylor Communications:
 - Promoville
