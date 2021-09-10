@@ -8,6 +8,11 @@
 Mike Bunger is a Software Developer currently on the job hunt!
 Here you will find his resume and samples of his work.
 
+### Personal Projects:
+Currently fiddling with a **Raspberry Pi** and churning through **Linux Device Drivers**, stay tuned...
+
+<img src="https://github.com/bungerm/portfolio/blob/main/_images/LDD3.jpg" width="160">
+
 ### Graduate School Projects:
 Most of the directories in this repository are code examples from grad school, which I will detail here.
 - [EightPuzzle](/EightPuzzle)
