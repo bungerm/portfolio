@@ -57,9 +57,6 @@ Most of the directories in this repository are code examples from grad school, w
   - An example of the short little demos and prototypes I would create with Taylor Communications.
   
 ### Rookfall:
-
-<img src="https://github.com/bungerm/portfolio/blob/main/_images/rookfallLogo1.png" width="600">
-
 - Puzzle Game for Android/iOS
 - Read the [Rookfall README](https://github.com/bungerm/portfolio/blob/main/RookfallREADME.md)
 - www.rookfall.com
